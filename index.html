@@ -3,401 +3,783 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ama — The Truth Is In The Texts</title>
-    
-    <link rel="icon" type="image/png" href="ama_icon.png">
-    <link rel="apple-touch-icon" href="ama_icon.png">
+    <title>MyMoodLab — The Truth Is In The Texts</title>
+    <meta name="description" content="MyMoodLab — AI-powered relationship analysis for WhatsApp conversations. Upload your chats, get mood scores, emotional insights, and honest feedback.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MyMoodLab — The Truth Is In The Texts">
+    <meta property="og:description" content="AI-powered relationship analysis for WhatsApp conversations. Mood scores, emotional insights, and honest feedback — from the texts you already have.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.advancedmoodanalyzer.com">
+    <meta property="og:image" content="https://www.advancedmoodanalyzer.com/MyML_icon.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="MyMoodLab — The Truth Is In The Texts">
+    <meta name="twitter:description" content="AI-powered relationship analysis for WhatsApp conversations.">
+
+    <link rel="icon" type="image/png" href="MyML_icon.png">
+    <link rel="apple-touch-icon" href="MyML_icon.png">
+
+    <!-- Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
+        /* ── TOKENS ─────────────────────────────────────────────────────── */
         :root {
-            --primary: #E91E63;
-            --primary-gradient: linear-gradient(135deg, #E91E63, #FF8A80);
-            --bg: #F5F5F7;
-            --card-bg: #FFFFFF;
-            --text-main: #1D1D1F;
-            --text-secondary: #86868B;
-            --shadow: 0 10px 40px rgba(0,0,0,0.08);
-            --radius-pill: 50px;
-            --radius-card: 28px;
+            --bg:        #0d1117;
+            --surface:   #161b22;
+            --surface2:  #1c2128;
+            --border:    #30363d;
+            --text:      #e6edf3;
+            --muted:     #8b949e;
+            --accent:    #E8736C;
+            --accent2:   #d45f58;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
         }
 
-        * { box-sizing: border-box; }
+        /* ── RESET ───────────────────────────────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.5;
+            color: var(--text);
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
+        a { color: inherit; text-decoration: none; }
+
+        img { display: block; max-width: 100%; }
+
+        /* ── LAYOUT ──────────────────────────────────────────────────────── */
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* HERO SECTION */
-        .hero {
-            padding: 120px 0 80px;
+        /* ── NAV ─────────────────────────────────────────────────────────── */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text);
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--text); }
+
+        /* ── HERO ────────────────────────────────────────────────────────── */
+        .hero {
+            padding: 96px 0 72px;
             text-align: center;
-        }
-
-        .app-icon {
-            width: 128px; 
-            height: 128px;
-            background: #fff; 
-            border-radius: 28px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(233, 30, 99, 0.25);
-            overflow: hidden; 
-            transition: transform 0.5s ease;
-        }
-
-        .app-icon:hover { transform: scale(1.05) rotate(-3deg); }
-
-        .app-icon img {
-            width: 100%; 
-            height: 100%;
-            object-fit: cover;
-            display: block;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 8vw, 80px);
+            font-size: clamp(44px, 7vw, 80px);
             font-weight: 800;
             letter-spacing: -0.04em;
-            margin: 0 0 24px;
-            line-height: 1;
-            background: var(--primary-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            line-height: 1.05;
+            margin-bottom: 24px;
         }
 
-        .hero p.tagline {
-            font-size: 22px;
-            color: var(--text-secondary);
-            max-width: 680px;
-            margin-bottom: 48px;
-            font-weight: 500;
+        .hero h1 .accent {
+            color: var(--accent);
         }
 
-        .btn-download {
+        .hero-sub {
+            font-size: clamp(16px, 2.5vw, 19px);
+            color: var(--muted);
+            max-width: 560px;
+            margin: 0 auto 36px;
+            line-height: 1.65;
+        }
+
+        .hero-sub strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .hero-ctas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-bottom: 64px;
+        }
+
+        .btn-primary {
             display: inline-flex;
             align-items: center;
-            background: #000;
-            color: white;
-            padding: 18px 40px;
-            border-radius: var(--radius-pill);
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 19px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            gap: 8px;
+            background: var(--text);
+            color: var(--bg);
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: opacity 0.2s, transform 0.2s;
         }
 
-        .btn-download:hover {
-            transform: scale(1.03) translateY(-2px);
-            box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
         }
 
-        /* FEATURES (MODES) GRID */
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: transparent;
+            color: var(--muted);
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 15px;
+            border: 1px solid var(--border);
+            transition: color 0.2s, border-color 0.2s, transform 0.2s;
+        }
+
+        .btn-secondary:hover {
+            color: var(--text);
+            border-color: var(--muted);
+            transform: translateY(-1px);
+        }
+
+        /* Apple-style download badge */
+        .appstore-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--bg);
+        }
+
+        /* ── STATS BAR ───────────────────────────────────────────────────── */
+        .stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            background: var(--surface);
+            overflow: hidden;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            flex: 1;
+            padding: 20px 16px;
+            text-align: center;
+            border-right: 1px solid var(--border);
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+
+        /* ── SECTION HEADER ──────────────────────────────────────────────── */
         .section-header {
             text-align: center;
-            margin: 100px 0 50px;
+            margin-bottom: 48px;
         }
 
-        .section-header h2 { font-size: 40px; font-weight: 800; margin-bottom: 12px; letter-spacing: -0.02em; }
-        
-        /* Grid adapted for 3 main items */
-        .modes-grid {
+        .section-header h2 {
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 17px;
+            color: var(--muted);
+        }
+
+        /* ── FEATURES GRID ───────────────────────────────────────────────── */
+        .features {
+            padding: 96px 0;
+        }
+
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            padding-bottom: 80px;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
         }
 
-        .mode-card {
-            background: var(--card-bg);
-            padding: 36px 32px;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow);
-            text-align: left;
-            transition: transform 0.3s ease;
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 28px 24px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text);
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* ── HOW IT WORKS ────────────────────────────────────────────────── */
+        .how-it-works {
+            padding: 96px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .step {
+            position: relative;
+            padding: 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+        }
+
+        .step-emoji {
+            font-size: 32px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .step-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--border);
+            line-height: 1;
+            user-select: none;
+        }
+
+        .step h3 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            font-size: 14px;
+            color: var(--muted);
+            line-height: 1.65;
+        }
+
+        /* ── SCREENSHOTS ─────────────────────────────────────────────────── */
+        .screenshots {
+            padding: 96px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .screenshots-grid {
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-top: 48px;
+        }
+
+        .screenshot-item {
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
+            align-items: center;
+            gap: 14px;
+            flex: 1;
+            min-width: 200px;
+            max-width: 280px;
         }
 
-        .mode-card:hover { transform: translateY(-8px); }
-        
-        .mode-icon {
-            font-size: 42px;
-            margin-bottom: 20px;
-            background: #F5F5F7;
-            width: 80px;
-            height: 80px;
+        .screenshot-frame {
+            width: 100%;
+            aspect-ratio: 9/19.5;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screenshot-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .screenshot-placeholder {
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 20px;
-        }
-
-        .mode-card h3 { 
-            font-size: 24px; 
-            margin: 0 0 12px 0;
-            color: #1D1D1F; 
-            font-weight: 700;
-        }
-        
-        .mode-card p { 
-            font-size: 17px; 
-            color: var(--text-secondary); 
-            margin-bottom: 24px; 
-            line-height: 1.5;
-        }
-
-        /* Feature list inside cards */
-        .vibe-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .vibe-list li {
-            margin-bottom: 12px;
-            font-size: 15px;
-            color: #424245;
-            display: flex;
-            align-items: flex-start;
+            flex-direction: column;
             gap: 10px;
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
         }
 
-        .vibe-list li span {
+        .screenshot-placeholder span {
+            font-size: 32px;
+        }
+
+        .screenshot-caption {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* ── LANGUAGE BAR ────────────────────────────────────────────────── */
+        .languages {
+            padding: 72px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .languages h3 {
+            font-size: 13px;
             font-weight: 600;
-            color: #000;
-        }
-
-        .vibe-list li::before {
-            content: "•";
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* COURT MODE SECTION */
-        .court-section {
-            background: #000;
-            color: white;
-            padding: 80px 40px;
-            border-radius: 40px;
-            margin: 20px 0 100px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .court-grid {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            gap: 50px;
-        }
-
-        .court-text { flex: 1; max-width: 500px; }
-        
-        .court-text h2 {
-            font-size: 48px;
-            font-weight: 800;
-            margin: 0 0 20px;
-            background: linear-gradient(to right, #E91E63, #FFC107);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .verdict-box {
-            background: #1C1C1E;
-            padding: 40px;
-            border-radius: 24px;
-            transform: rotate(3deg);
-            border: 1px solid #333;
-        }
-
-        .verdict-stamp {
-            border: 6px solid #FF3B30;
-            color: #FF3B30;
-            padding: 10px 30px;
-            font-weight: 900;
-            font-size: 48px;
-            border-radius: 12px;
+            color: var(--muted);
             text-transform: uppercase;
-            transform: rotate(-15deg);
-            display: inline-block;
-            opacity: 0.9;
-            box-shadow: 0 0 30px rgba(255, 59, 48, 0.2);
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
         }
 
-        /* COACH SECTION */
-        .coach-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 100px;
+        .language-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            max-width: 860px;
+            margin: 0 auto;
         }
 
-        .coach-card {
-            background: white;
-            padding: 50px 40px;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s ease;
+        .language-tag {
+            font-size: 13px;
+            color: var(--muted);
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 5px 12px;
+            border-radius: 100px;
+            font-weight: 500;
+            transition: color 0.2s, border-color 0.2s;
         }
 
-        .coach-card:hover { transform: scale(1.02); }
-
-        .coach-icon { font-size: 64px; margin-bottom: 24px; display: block; }
-        
-        .coach-card h3 { font-size: 24px; font-weight: 700; margin-bottom: 12px; }
-
-        /* PRIVACY */
-        .privacy-highlight {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0,0,0,0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: var(--radius-card);
-            text-align: center;
-            margin-bottom: 80px;
+        .language-tag:hover {
+            color: var(--text);
+            border-color: var(--muted);
         }
 
+        /* ── FOOTER ──────────────────────────────────────────────────────── */
         footer {
-            padding: 60px 0;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 14px;
-            border-top: 1px solid #E5E5E7;
+            border-top: 1px solid var(--border);
+            padding: 48px 0;
         }
 
-        footer a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 500; transition: color 0.2s; }
-        footer a:hover { color: var(--primary); }
+        .footer-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 32px;
+        }
 
-        /* RESPONSIVE */
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .footer-brand img {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--muted);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover { color: var(--text); }
+
+        .footer-copy {
+            font-size: 13px;
+            color: var(--muted);
+            text-align: right;
+        }
+
+        /* ── RESPONSIVE ──────────────────────────────────────────────────── */
         @media (max-width: 768px) {
-            .court-grid { flex-direction: column; text-align: center; }
-            .court-text { text-align: center; }
-            .hero h1 { font-size: 48px; }
+            .hero { padding: 72px 0 56px; }
+
+            .nav-links { gap: 20px; }
+
+            .features { padding: 72px 0; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+
+            .how-it-works { padding: 72px 0; }
+            .screenshots { padding: 72px 0; }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-brand { justify-content: center; }
+            .footer-links { justify-content: center; }
+            .footer-copy { text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { gap: 16px; }
+            .nav-links a { font-size: 13px; }
+
+            .features-grid { grid-template-columns: 1fr; }
+
+            .hero-ctas { flex-direction: column; align-items: center; }
+
+            .stats-bar { flex-direction: column; max-width: 280px; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+            .stat-item:last-child { border-bottom: none; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <section class="hero">
-            <div class="app-icon">
-                <img src="ama_icon.png" alt="ama iOS icon">
-            </div>
-            <h2 class="app-title-sub">ama — Advanced Mood Analyzer</h2>
-            <h1>The truth is in<br>the texts.</h1>
-            <p class="tagline">Stop guessing. Export your chat, choose your mode, and let AI reveal the hidden dynamics of your relationships.</p>
-            <a href="https://apps.apple.com/app/id6758580161" class="btn-download">Download on App Store</a>
-        </section>
-
-        <div class="section-header">
-            <h2>3 Modes. 3 Vibe Checks.</h2>
-            <p style="color: var(--text-secondary);">Because a "dry text" means something different in a Group Chat vs. a Date.</p>
+    <!-- ── NAV ──────────────────────────────────────────────────────────── -->
+    <nav>
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">
+                <img src="MyML_icon.png" alt="MyMoodLab icon">
+                MyMoodLab
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="mailto:support@advancedmoodanalyzer.com">Support</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <section class="modes-grid">
-            
-            <div class="mode-card">
-                <div class="mode-icon">💘</div>
-                <h3>Romantic</h3>
-                <p>Is it love or love-bombing? We analyze the chemistry and safety of your romantic threads.</p>
-                <ul class="vibe-list">
-                    <li><span>Reciprocity:</span> Are you carrying the convo?</li>
-                    <li><span>Romanticism:</span> Flirtation & chemistry levels.</li>
-                    <li><span>Green Flags:</span> Consistency & emotional safety.</li>
-                </ul>
-            </div>
-
-            <div class="mode-card">
-                <div class="mode-icon">🐍</div>
-                <h3>Friendship</h3>
-                <p>Real friends vs. snakes. We focus on loyalty, support, and hidden toxicity.</p>
-                <ul class="vibe-list">
-                    <li><span>Hype Factor:</span> Do they gas you up?</li>
-                    <li><span>Real Talk:</span> Vulnerability vs. surface level memes.</li>
-                    <li><span>Loyalty:</span> Snake behavior detection.</li>
-                </ul>
-            </div>
-
-            <div class="mode-card">
-                <div class="mode-icon">📢</div>
-                <h3>Group Chat</h3>
-                <p>Analyze the chaos. Who is the Main Character and who is just an NPC?</p>
-                <ul class="vibe-list">
-                    <li><span>Main Character Energy:</span> Who runs the chat?</li>
-                    <li><span>Chaos Meter:</span> Unhinged takes & entropy.</li>
-                    <li><span>Unity:</span> Do plans happen or is it all talk?</li>
-                </ul>
-            </div>
-
-        </section>
-
-        <section class="court-section">
-            <div class="court-grid">
-                <div class="court-text">
-                    <span style="font-weight: 700; color: #86868B; letter-spacing: 1px; text-transform: uppercase; font-size: 13px; margin-bottom: 10px; display: block;">Relationship Court</span>
-                    <h2>Settle the argument.</h2>
-                    <p style="color: #D1D1D6; font-size: 19px; line-height: 1.6;">He said, she said? Whatever. Upload the "evidence" and let the <strong>AI Judge</strong> issue a binding verdict. We call out logical fallacies and sentence the guilty party.</p>
-                </div>
-                <div class="verdict-box">
-                    <div class="verdict-stamp">GUILTY</div>
-                </div>
-            </div>
-        </section>
-
-        <div class="section-header">
-            <h2>Choose Your Coach</h2>
-            <p style="color: var(--text-secondary);">Delulu or Real Talk? You decide.</p>
-        </div>
-
-        <section class="coach-grid">
-            <div class="coach-card">
-                <div class="coach-icon">💅</div>
-                <h3>The Bestie</h3>
-                <p style="color: #666;">"Omg no he's totally obsessed with you."<br><br>Supportive, gossipy, and ready to gas you up. Perfect for when you need validation.</p>
-            </div>
-            <div class="coach-card">
-                <div class="coach-icon">🗿</div>
-                <h3>The Bro</h3>
-                <p style="color: #666;">"Look at the data. Move on."<br><br>Stoic logic. No fluff. Just the hard facts derived from your chat history.</p>
-            </div>
-        </section>
-
-        <section class="privacy-highlight">
-            <div style="font-size: 40px; margin-bottom: 15px;">🔒</div>
-            <h3 style="font-size: 24px; margin: 0 0 10px;">Your Secrets Are Safe</h3>
-            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto; font-size: 16px;">
-                We know your chats are personal. That's why analysis is performed securely via transient processing. We do not store your logs, and we definitely don't train models on your drama.
+    <!-- ── HERO ─────────────────────────────────────────────────────────── -->
+    <section class="hero">
+        <div class="container">
+            <h1>
+                Upload your chats.<br>
+                <span class="accent">Decode the truth.</span>
+            </h1>
+            <p class="hero-sub">
+                AI-powered relationship analysis for WhatsApp conversations.<br>
+                Mood scores, emotional insights, and honest feedback —<br>
+                from the texts you already have.<br>
+                <strong>Available in 15+ languages.</strong>
             </p>
-        </section>
+            <div class="hero-ctas">
+                <a href="https://apps.apple.com/app/id6758580161" class="btn-primary">
+                    <svg class="appstore-icon" viewBox="0 0 814 1000" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-37.3-166.9-108.1C46.6 749.9 0 614.2 0 483.4c0-238.4 155.3-364.5 308.1-364.5 79.1 0 144.9 51.9 194.7 51.9 47.8 0 122.6-55 214.1-55 34.5 0 137.5 3.2 208.6 106.9zm-130.9-200.4c-4.5-28-5.8-56.7 0-85.5 34.5-22.6 87.5-60 118.4-60 26.7 0 30.4 21.9 30.4 43.3-3.2 37.3-20.1 73.2-50.8 101.9-26.7 25.2-62.2 44.5-98.1 44.5z"/>
+                    </svg>
+                    Download on the App Store
+                </a>
+                <a href="#features" class="btn-secondary">
+                    See features ↓
+                </a>
+            </div>
 
-    </div>
+            <!-- Stats bar -->
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-value">✦ AI</div>
+                    <div class="stat-label">Powered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">15+</div>
+                    <div class="stat-label">languages</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">on your device</div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- ── FEATURES ──────────────────────────────────────────────────────── -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Your relationships, decoded.</h2>
+                <p>Upload a WhatsApp chat. Get insights you can't unsee.</p>
+            </div>
+            <div class="features-grid">
+
+                <div class="feature-card">
+                    <span class="feature-icon">📊</span>
+                    <h3>Mood Scoring</h3>
+                    <p>AI analyzes emotional patterns, reciprocity, and romantic energy across your entire conversation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🎁</span>
+                    <h3>Relationship Wrapped</h3>
+                    <p>Get a full visual breakdown of your relationship — scores, timelines, and AI-generated feedback.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">⚖️</span>
+                    <h3>Court Verdict</h3>
+                    <p>Submit a conflict. AI plays judge, analyzes both sides, and delivers a verdict.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">📅</span>
+                    <h3>Daily Timeline</h3>
+                    <p>See how your connection evolves day by day with emotional trend lines.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">💬</span>
+                    <h3>Smart Assistant</h3>
+                    <p>Ask follow-up questions about your analysis. The AI remembers your conversation.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Privacy First</h3>
+                    <p>Your chat is analyzed securely. Results are saved only on your device. Delete anytime.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🌍</span>
+                    <h3>15+ Languages</h3>
+                    <p>From English to Japanese, Italian to Danish — analyze in your language.</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">✨</span>
+                    <h3>Share Cards</h3>
+                    <p>Export beautiful wrapped cards to share your results (without the private details).</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── HOW IT WORKS ──────────────────────────────────────────────────── -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How it works</h2>
+                <p>Three steps. No setup beyond the upload.</p>
+            </div>
+            <div class="steps-grid">
+
+                <div class="step">
+                    <span class="step-number">1</span>
+                    <span class="step-emoji">📤</span>
+                    <h3>Upload a WhatsApp chat</h3>
+                    <p>Export any WhatsApp conversation and upload it to MyMoodLab. Works with romantic, friendship, and group chats.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">2</span>
+                    <span class="step-emoji">🧠</span>
+                    <h3>AI analyzes everything</h3>
+                    <p>Our AI reads every message, scores emotional patterns, and generates a detailed relationship report.</p>
+                </div>
+
+                <div class="step">
+                    <span class="step-number">3</span>
+                    <span class="step-emoji">📊</span>
+                    <h3>See the truth</h3>
+                    <p>Get mood scores, daily timelines, honest feedback, and a full Relationship Wrapped — all in seconds.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── SCREENSHOTS ───────────────────────────────────────────────────── -->
+    <section class="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2>Built for people who want the truth about their relationships.</h2>
+                <p>Clean, honest, no sugarcoating. Every insight earns its place.</p>
+            </div>
+            <div class="screenshots-grid">
+
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <div class="screenshot-placeholder">
+                            <span>📊</span>
+                            Analysis Dashboard
+                        </div>
+                    </div>
+                    <span class="screenshot-caption">Analysis Dashboard</span>
+                </div>
+
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <div class="screenshot-placeholder">
+                            <span>🎁</span>
+                            Relationship Wrapped
+                        </div>
+                    </div>
+                    <span class="screenshot-caption">Relationship Wrapped</span>
+                </div>
+
+                <div class="screenshot-item">
+                    <div class="screenshot-frame">
+                        <div class="screenshot-placeholder">
+                            <span>⚖️</span>
+                            Court Verdict
+                        </div>
+                    </div>
+                    <span class="screenshot-caption">Court Verdict</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── LANGUAGE BAR ──────────────────────────────────────────────────── -->
+    <section class="languages">
+        <div class="container">
+            <h3>Available worldwide, in your language</h3>
+            <div class="language-list">
+                <span class="language-tag">English</span>
+                <span class="language-tag">Italiano</span>
+                <span class="language-tag">Dansk</span>
+                <span class="language-tag">Deutsch</span>
+                <span class="language-tag">Français</span>
+                <span class="language-tag">Español</span>
+                <span class="language-tag">Português</span>
+                <span class="language-tag">日本語</span>
+                <span class="language-tag">한국어</span>
+                <span class="language-tag">中文</span>
+                <span class="language-tag">Türkçe</span>
+                <span class="language-tag">Русский</span>
+                <span class="language-tag">العربية</span>
+                <span class="language-tag">हिन्दी</span>
+                <span class="language-tag">Bahasa Indonesia</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── FOOTER ────────────────────────────────────────────────────────── -->
     <footer>
-        <p>&copy; 2026 Leonardo Ferhati. All rights reserved.</p>
-        <div style="margin-top: 25px;">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms of Use</a>
-            <a href="mailto:support@advancedmoodanalyzer.com">Support</a>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <img src="MyML_icon.png" alt="MyMoodLab icon">
+                MyMoodLab
+            </div>
+            <ul class="footer-links">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms of Use</a></li>
+                <li><a href="mailto:support@advancedmoodanalyzer.com">Support</a></li>
+            </ul>
+            <p class="footer-copy">© 2026 MyMoodLab</p>
         </div>
     </footer>
 

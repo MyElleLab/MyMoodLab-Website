@@ -3,127 +3,206 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="ama_icon.png">
-    <link rel="apple-touch-icon" href="ama_icon.png">
-    <title>Privacy Policy — Advanced Mood Analyzer</title>
+    <title>Privacy Policy — MyMoodLab</title>
+    <meta name="description" content="MyMoodLab Privacy Policy — how we handle your data.">
+
+    <link rel="icon" type="image/png" href="MyML_icon.png">
+    <link rel="apple-touch-icon" href="MyML_icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #E91E63;
-            --bg: #F5F5F7;
-            --card-bg: #FFFFFF;
-            --text-main: #1D1D1F;
-            --text-secondary: #86868B;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --radius-pill: 40px;
-            --radius-card: 24px;
+            --bg:      #0d1117;
+            --surface: #161b22;
+            --border:  #30363d;
+            --text:    #e6edf3;
+            --muted:   #8b949e;
+            --accent:  #E8736C;
         }
 
-        * { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.6;
+            color: var(--text);
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 800px;
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        /* BACK BUTTON */
-        .nav-header {
-            margin-bottom: 60px;
-        }
-
-        .btn-back {
-            display: inline-flex;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
             align-items: center;
-            padding: 10px 20px;
-            background: var(--card-bg);
-            color: var(--text-main);
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text);
             text-decoration: none;
-            border-radius: var(--radius-pill);
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
             font-size: 14px;
             font-weight: 500;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .btn-back:hover {
-            transform: translateX(-5px);
+        .nav-links a:hover { color: var(--text); }
+
+        /* LAYOUT */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 72px 24px 96px;
         }
+
+        /* BACK */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            margin-bottom: 48px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--text); text-decoration: none; }
 
         /* TYPOGRAPHY */
         h1 {
-            font-size: 48px;
-            letter-spacing: -0.03em;
-            margin-bottom: 10px;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            margin-bottom: 8px;
+            line-height: 1.1;
         }
 
-        .last-updated {
-            color: var(--text-secondary);
-            font-size: 16px;
-            margin-bottom: 40px;
+        .meta {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 48px;
         }
 
-        h2 {
-            font-size: 24px;
-            margin-top: 40px;
-            color: var(--text-main);
-        }
-
-        p {
-            font-size: 18px;
-            color: #424245;
-        }
-
-        /* CONTENT CARDS */
+        /* CARDS */
         .policy-card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow);
-            margin-bottom: 20px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 16px;
+        }
+
+        .policy-card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .policy-card p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .policy-card p strong {
+            color: var(--text);
         }
 
         .highlight {
-            color: var(--primary);
+            color: var(--accent);
             font-weight: 600;
         }
 
+        /* FOOTER */
         footer {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #d2d2d7;
+            margin-top: 72px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 14px;
+            font-size: 13px;
+            color: var(--muted);
         }
 
-        a { color: var(--primary); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-
+        @media (max-width: 480px) {
+            .nav-links { gap: 16px; }
+            .container { padding: 48px 20px 72px; }
+        }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="MyML_icon.png" alt="MyMoodLab icon">
+                MyMoodLab
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="mailto:support@advancedmoodanalyzer.com">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header class="nav-header">
-            <a href="index.html" class="btn-back">← Back to Home</a>
-        </header>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
 
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Effective Date: February 2, 2026</p>
+        <p class="meta">Effective Date: February 2, 2026</p>
 
-        <p>At <strong>ama - Advanced Mood Analyzer</strong>, we believe your personal business should stay exactly that—personal. We’ve built our tech to ensure you can analyze the vibe without compromising your privacy.</p>
+        <p style="font-size: 16px; color: var(--muted); margin-bottom: 32px; line-height: 1.75;">
+            At <strong style="color: var(--text);">MyMoodLab</strong>, we believe your personal business should stay exactly that — personal. We've built our tech to ensure you can analyze the vibe without compromising your privacy.
+        </p>
 
         <section class="policy-card">
-            <h2>1. Chat Analysis & Content</h2>
+            <h2>1. Chat Analysis &amp; Content</h2>
             <p>To provide relationship insights, we process the text messages (User Content) you voluntarily upload. This analysis is performed securely using third-party AI partners. This processing is <span class="highlight">transient</span>: your raw chat logs are analyzed to generate the report and are not permanently stored on our servers or used to train public AI models.</p>
         </section>
 
@@ -133,12 +212,12 @@
         </section>
 
         <section class="policy-card">
-            <h2>3. Subscriptions & Purchases</h2>
+            <h2>3. Subscriptions &amp; Purchases</h2>
             <p>If you purchase a Pro subscription, we process your <span class="highlight">Purchase History</span> via RevenueCat and Apple to validate your subscription status. We do not have access to your direct credit card or banking information.</p>
         </section>
 
         <section class="policy-card">
-            <h2>4. Analytics & Diagnostics</h2>
+            <h2>4. Analytics &amp; Diagnostics</h2>
             <p>We use tools like Firebase Analytics and Crashlytics to collect usage data (such as button taps, screen views, and crash logs). While this data is linked to your anonymous Device ID to help us troubleshoot issues and improve the app, we <span class="highlight">do not</span> share this data with third-party data brokers or use it for advertising tracking.</p>
         </section>
 
@@ -148,8 +227,9 @@
         </section>
 
         <footer>
-            <p>&copy; 2026 Leonardo Ferhati. All rights reserved.</p>
+            <p>© 2026 MyMoodLab</p>
         </footer>
+
     </div>
 
 </body>

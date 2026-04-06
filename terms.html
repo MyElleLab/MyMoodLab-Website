@@ -3,122 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="ama_icon.png">
-    <link rel="apple-touch-icon" href="ama_icon.png">
-    <title>Terms of Use — Advanced Mood Analyzer</title>
+    <title>Terms of Use — MyMoodLab</title>
+    <meta name="description" content="MyMoodLab Terms of Use.">
+
+    <link rel="icon" type="image/png" href="MyML_icon.png">
+    <link rel="apple-touch-icon" href="MyML_icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary: #E91E63;
-            --bg: #F5F5F7;
-            --card-bg: #FFFFFF;
-            --text-main: #1D1D1F;
-            --text-secondary: #86868B;
-            --shadow: 0 10px 30px rgba(0,0,0,0.08);
-            --radius-pill: 40px;
-            --radius-card: 24px;
+            --bg:      #0d1117;
+            --surface: #161b22;
+            --border:  #30363d;
+            --text:    #e6edf3;
+            --muted:   #8b949e;
+            --accent:  #E8736C;
         }
 
-        * { box-sizing: border-box; }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
             background-color: var(--bg);
-            color: var(--text-main);
-            margin: 0;
-            line-height: 1.6;
+            color: var(--text);
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 60px 20px;
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* NAV */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
         }
 
-        /* NAVIGATION */
-        .nav-header { margin-bottom: 60px; }
-
-        .btn-back {
-            display: inline-flex;
+        .nav-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
             align-items: center;
-            padding: 10px 20px;
-            background: var(--card-bg);
-            color: var(--text-main);
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--text);
             text-decoration: none;
-            border-radius: var(--radius-pill);
+        }
+
+        .nav-logo img {
+            width: 32px;
+            height: 32px;
+            border-radius: 7px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
             font-size: 14px;
             font-weight: 500;
-            box-shadow: var(--shadow);
-            transition: transform 0.2s ease;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        .btn-back:hover { transform: translateX(-5px); }
+        .nav-links a:hover { color: var(--text); }
+
+        /* LAYOUT */
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 72px 24px 96px;
+        }
+
+        /* BACK */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted);
+            text-decoration: none;
+            margin-bottom: 48px;
+            transition: color 0.2s;
+        }
+
+        .back-link:hover { color: var(--text); text-decoration: none; }
 
         /* TYPOGRAPHY */
-        h1 { font-size: 48px; letter-spacing: -0.03em; margin-bottom: 10px; }
-        .subtitle { color: var(--text-secondary); margin-bottom: 40px; }
-        h2 { font-size: 22px; margin-top: 30px; border-bottom: 1px solid #e5e5e7; padding-bottom: 10px; }
-        
-        /* CONTENT BLOCKS */
-        .terms-card {
-            background: var(--card-bg);
-            padding: 35px;
-            border-radius: var(--radius-card);
-            box-shadow: var(--shadow);
-            margin-bottom: 25px;
+        h1 {
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            margin-bottom: 8px;
+            line-height: 1.1;
         }
 
+        .meta {
+            font-size: 14px;
+            color: var(--muted);
+            margin-bottom: 48px;
+        }
+
+        /* CARDS */
+        .terms-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 16px;
+        }
+
+        .terms-card h2 {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: var(--text);
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .terms-card p {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.75;
+        }
+
+        .terms-card p strong {
+            color: var(--text);
+        }
+
+        .terms-card ul {
+            padding-left: 20px;
+            margin-top: 12px;
+        }
+
+        .terms-card li {
+            font-size: 15px;
+            color: var(--muted);
+            margin-bottom: 10px;
+            line-height: 1.65;
+        }
+
+        .terms-card li strong {
+            color: var(--text);
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        /* IMPORTANT card variant */
         .ai-notice {
-            border: 2px solid var(--primary);
+            border-color: var(--accent);
             position: relative;
         }
 
-        .ai-notice::after {
+        .ai-notice::before {
             content: "IMPORTANT";
             position: absolute;
-            top: -12px;
+            top: -11px;
             right: 20px;
-            background: var(--primary);
-            color: white;
+            background: var(--accent);
+            color: #fff;
             font-size: 10px;
             font-weight: 800;
+            letter-spacing: 0.08em;
             padding: 2px 10px;
-            border-radius: 10px;
+            border-radius: 100px;
         }
 
-        ul { padding-left: 20px; }
-        li { margin-bottom: 10px; color: #424245; }
-        
-        .highlight { color: var(--primary); font-weight: 600; }
-
+        /* FOOTER */
         footer {
-            margin-top: 80px;
-            padding: 40px 0;
+            margin-top: 72px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
             text-align: center;
-            color: var(--text-secondary);
-            font-size: 14px;
-            border-top: 1px solid #d2d2d7;
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 480px) {
+            .nav-links { gap: 16px; }
+            .container { padding: 48px 20px 72px; }
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">
+                <img src="MyML_icon.png" alt="MyMoodLab icon">
+                MyMoodLab
+            </a>
+            <ul class="nav-links">
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="mailto:support@advancedmoodanalyzer.com">Support</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container">
-        <header class="nav-header">
-            <a href="index.html" class="btn-back">← Back to Home</a>
-        </header>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
 
         <h1>Terms of Use</h1>
-        <p class="subtitle">Last Updated: February 2, 2026</p>
+        <p class="meta">Last Updated: February 2, 2026</p>
 
         <section class="terms-card">
             <h2>1. Acceptance of Terms</h2>
-            <p>By downloading or using <strong>ama - Advanced Mood Analyzer</strong>, you agree to these terms. Our services ("Deep Dive," "AI Assistant," and "Court") are tools designed for entertainment and personal insight. You acknowledge that you use these AI-driven features at your own discretion.</p>
+            <p>By downloading or using <strong>MyMoodLab</strong>, you agree to these terms. Our services ("Deep Dive," "AI Assistant," and "Court") are tools designed for entertainment and personal insight. You acknowledge that you use these AI-driven features at your own discretion.</p>
         </section>
 
         <section class="terms-card ai-notice">
-            <h2>2. AI Analysis & User Content</h2>
-            <p><strong>ama - Advanced Mood Analyzer</strong> uses third-party AI technology to analyze the text messages you upload. By using this feature, you agree to the following:</p>
+            <h2>2. AI Analysis &amp; User Content</h2>
+            <p><strong>MyMoodLab</strong> uses third-party AI technology to analyze the text messages you upload. By using this feature, you agree to the following:</p>
             <ul>
                 <li><strong>Transient Processing:</strong> Your chat logs are sent securely to our AI partners solely for the purpose of generating your analysis. We do <span class="highlight">not</span> permanently store your uploaded chat files or use them to train public AI models.</li>
                 <li><strong>User Responsibility:</strong> You confirm that you have the right to upload the content you submit for analysis.</li>
@@ -127,7 +251,7 @@
 
         <section class="terms-card">
             <h2>3. No Account Required</h2>
-            <p><strong>ama - Advanced Mood Analyzer</strong> functions without requiring you to create a traditional account (username/password). Your access to Pro features and settings is tied to your unique <strong>Device Identifier</strong>. Please note that if you delete the app or switch devices without restoring purchases, local data (like chat history) may be lost.</p>
+            <p><strong>MyMoodLab</strong> functions without requiring you to create a traditional account (username/password). Your access to Pro features and settings is tied to your unique <strong>Device Identifier</strong>. Please note that if you delete the app or switch devices without restoring purchases, local data (like chat history) may be lost.</p>
         </section>
 
         <section class="terms-card">
@@ -142,7 +266,7 @@
 
         <section class="terms-card">
             <h2>5. Disclaimer</h2>
-            <p><strong>ama - Advanced Mood Analyzer</strong> provides relationship <em>insights</em> based on linguistic patterns. We are <span class="highlight">not</span> a medical or mental health service. Our "AI Assistant" and "Court" features are for informational and entertainment purposes only. If you are in a harmful situation, please consult a professional.</p>
+            <p><strong>MyMoodLab</strong> provides relationship <em>insights</em> based on linguistic patterns. We are <span class="highlight">not</span> a medical or mental health service. Our "AI Assistant" and "Court" features are for informational and entertainment purposes only. If you are in a harmful situation, please consult a professional.</p>
         </section>
 
         <section class="terms-card">
@@ -151,8 +275,9 @@
         </section>
 
         <footer>
-            <p>&copy; 2026 Leonardo Ferhati. All rights reserved.</p>
+            <p>© 2026 MyMoodLab</p>
         </footer>
+
     </div>
 
 </body>
