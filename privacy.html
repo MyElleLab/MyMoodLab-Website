@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy — MyMoodLab</title>
-    <meta name="description" content="MyMoodLab Privacy Policy — how we handle your data.">
+    <meta name="description" content="MyMoodLab Privacy Policy — GDPR-compliant, plain language.">
 
     <link rel="icon" type="image/png" href="MyML_icon.png">
     <link rel="apple-touch-icon" href="MyML_icon.png">
@@ -139,8 +139,18 @@
         .policy-card h2 {
             font-size: 17px;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             color: var(--text);
+        }
+
+        .policy-card h3 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
 
         .policy-card p {
@@ -149,13 +159,89 @@
             line-height: 1.75;
         }
 
+        .policy-card p + p {
+            margin-top: 12px;
+        }
+
         .policy-card p strong {
+            color: var(--text);
+        }
+
+        .policy-card ul,
+        .policy-card ol {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+
+        .policy-card li {
+            font-size: 15px;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .policy-card li strong {
             color: var(--text);
         }
 
         .highlight {
             color: var(--accent);
             font-weight: 600;
+        }
+
+        /* TABLES */
+        .table-wrap {
+            overflow-x: auto;
+            margin-top: 16px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13.5px;
+        }
+
+        th {
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            color: var(--text);
+            padding: 10px 14px;
+            background: var(--border);
+        }
+
+        td {
+            padding: 11px 14px;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.6;
+        }
+
+        td strong {
+            color: var(--text);
+        }
+
+        /* NOTICE CARD VARIANT */
+        .notice-card {
+            border-color: var(--accent);
+            position: relative;
+        }
+
+        .notice-card::before {
+            content: "ART. 9 — SPECIAL DATA";
+            position: absolute;
+            top: -11px;
+            right: 20px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            padding: 2px 10px;
+            border-radius: 100px;
         }
 
         /* FOOTER */
@@ -195,39 +281,288 @@
         <a href="index.html" class="back-link">← Back to Home</a>
 
         <h1>Privacy Policy</h1>
-        <p class="meta">Effective Date: February 2, 2026</p>
+        <p class="meta">Effective Date: April 6, 2026</p>
 
         <p style="font-size: 16px; color: var(--muted); margin-bottom: 32px; line-height: 1.75;">
-            At <strong style="color: var(--text);">MyMoodLab</strong>, we believe your personal business should stay exactly that — personal. We've built our tech to ensure you can analyze the vibe without compromising your privacy.
+            This policy explains what data <strong style="color: var(--text);">MyMoodLab</strong> collects, why, and what rights you have over it. We process personal data — including special-category data about your emotional and psychological patterns — under the EU General Data Protection Regulation (GDPR). We've written this in plain language so it's actually readable.
         </p>
 
+        <!-- 1. Who We Are -->
         <section class="policy-card">
-            <h2>1. Chat Analysis &amp; Content</h2>
-            <p>To provide relationship insights, we process the text messages (User Content) you voluntarily upload. This analysis is performed securely using third-party AI partners. This processing is <span class="highlight">transient</span>: your raw chat logs are analyzed to generate the report and are not permanently stored on our servers or used to train public AI models.</p>
+            <h2>1. Who We Are</h2>
+            <p>
+                <strong>App:</strong> MyMoodLab<br>
+                <strong>Developer:</strong> Leonardo Ferhati (sole developer, individual — not a company)<br>
+                <strong>Contact:</strong> <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a><br>
+                <strong>Effective Date:</strong> April 6, 2026
+            </p>
+            <p>Leonardo Ferhati acts as the GDPR data controller and is responsible for how your personal data is collected and used. MyMoodLab processes special-category data — specifically, data about your emotional and psychological patterns — under Article 9 of the GDPR.</p>
         </section>
 
+        <!-- 2. Data We Collect -->
         <section class="policy-card">
-            <h2>2. No Account Required</h2>
-            <p>We do not collect your email address or require you to create an account. Instead, we use anonymous <span class="highlight">Device Identifiers</span> to manage your Pro subscription and settings. This ensures your usage remains private and unlinked to your personal contact information.</p>
+            <h2>2. Data We Collect</h2>
+
+            <h3>Data you provide</h3>
+            <ul>
+                <li><strong>Name, age, and persona</strong> — entered during onboarding for profile personalization</li>
+                <li><strong>WhatsApp chat text</strong> — the conversation you choose to upload, which includes messages from other participants</li>
+                <li><strong>Relationship type</strong> — whether the conversation is romantic, friendship, or a group chat</li>
+                <li><strong>Onboarding survey responses</strong> — how you found the app, texting frequency, relationship duration, and your goal</li>
+            </ul>
+
+            <h3>Data generated by AI analysis</h3>
+            <ul>
+                <li><strong>Mood and emotional scores</strong> — reciprocity, emotivity, romanticism, and green flags</li>
+                <li><strong>Relationship summaries and AI-generated feedback</strong></li>
+                <li><strong>Court verdicts</strong> — conflict analysis results</li>
+                <li><strong>Daily emotional timeline</strong> — per-day emotional scores across the conversation</li>
+            </ul>
+
+            <h3>Data collected automatically</h3>
+            <ul>
+                <li><strong>Firebase anonymous user ID and auth tokens</strong> — used to secure API access; no email or name is linked to this ID</li>
+                <li><strong>Subscription and purchase data</strong> — via RevenueCat, to validate and manage your Pro subscription</li>
+            </ul>
         </section>
 
-        <section class="policy-card">
-            <h2>3. Subscriptions &amp; Purchases</h2>
-            <p>If you purchase a Pro subscription, we process your <span class="highlight">Purchase History</span> via RevenueCat and Apple to validate your subscription status. We do not have access to your direct credit card or banking information.</p>
+        <!-- Art. 9 notice -->
+        <section class="policy-card notice-card">
+            <h2>Special-Category Data (Art. 9 GDPR)</h2>
+            <p>Mood scores, emotional analysis, and relationship insights derived from your conversations qualify as <strong>health-related and psychological data</strong> under GDPR Article 9. This is a special category of personal data. Processing it requires your <span class="highlight">explicit consent</span> — which we ask for before your first analysis. You can withdraw that consent at any time in Settings → Manage Privacy Consent.</p>
         </section>
 
+        <!-- 3. How We Use Your Data -->
         <section class="policy-card">
-            <h2>4. Analytics &amp; Diagnostics</h2>
-            <p>We use tools like Firebase Analytics and Crashlytics to collect usage data (such as button taps, screen views, and crash logs). While this data is linked to your anonymous Device ID to help us troubleshoot issues and improve the app, we <span class="highlight">do not</span> share this data with third-party data brokers or use it for advertising tracking.</p>
+            <h2>3. How We Use Your Data</h2>
+            <p>For every processing activity, we rely on a specific legal basis under the GDPR.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Processing</th>
+                            <th>Purpose</th>
+                            <th>Legal Basis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Profile data</strong> (name, age, persona)</td>
+                            <td>Personalize your experience</td>
+                            <td>Contract — Art. 6(1)(b)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chat analysis via AI</strong></td>
+                            <td>Core service — analyze your conversations</td>
+                            <td>Explicit consent — Art. 9(2)(a)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mood &amp; emotional scoring</strong></td>
+                            <td>Generate relationship insights</td>
+                            <td>Explicit consent — Art. 9(2)(a)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subscription management</strong></td>
+                            <td>Process purchases and manage Pro access</td>
+                            <td>Contract — Art. 6(1)(b)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anonymous authentication</strong></td>
+                            <td>Secure API access</td>
+                            <td>Legitimate interest — Art. 6(1)(f)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
+        <!-- 4. How We Process Your Chats -->
         <section class="policy-card">
-            <h2>5. Contact Us</h2>
-            <p>Questions about your data? Our support team is ready to clear things up. Reach out at <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a>.</p>
+            <h2>4. How We Process Your Chats</h2>
+            <p>Here is exactly what happens when you upload a chat:</p>
+            <ol>
+                <li>You select a WhatsApp chat export from your device.</li>
+                <li><strong>Before the chat leaves your device</strong>, our name anonymization pipeline replaces all participant names with pseudonyms (Person A, Person B, etc.).</li>
+                <li>The anonymized text is sent securely over HTTPS to our servers — Google Cloud / Firebase Cloud Functions, deployed in the EU (europe-west1).</li>
+                <li>Our servers forward the anonymized text to OpenAI's API for analysis.</li>
+                <li>OpenAI generates mood scores, feedback, and insights, which are returned to our servers.</li>
+                <li>Results are sent back to your device and stored locally only.</li>
+                <li><strong>The anonymized chat text is deleted from our servers after processing</strong> — we do not retain it.</li>
+            </ol>
+        </section>
+
+        <!-- 5. Third-Party Chat Data (Art. 14) -->
+        <section class="policy-card">
+            <h2>5. Third-Party Chat Data (Art. 14 GDPR)</h2>
+            <p>When you upload a conversation, it contains personal data belonging to the other participants — people who have no direct relationship with MyMoodLab and have not individually consented to this processing.</p>
+            <p>Here is how we reduce risk to them:</p>
+            <ul>
+                <li>We <strong>anonymize all participant names</strong> (replacing them with pseudonyms) before the chat text is transmitted to our servers or to OpenAI.</li>
+                <li>The anonymized text is <strong>not stored</strong> on our servers after processing is complete.</li>
+                <li>We display a <strong>clear warning before every upload</strong> reminding you that the conversation contains other people's personal data.</li>
+            </ul>
+            <p>By uploading a chat, you confirm that you have a legitimate reason to share that conversation and that you understand the other participants have not directly consented to this analysis.</p>
+        </section>
+
+        <!-- 6. Third-Party Services -->
+        <section class="policy-card">
+            <h2>6. Third-Party Services</h2>
+            <p>We share data with the following processors, strictly for the purposes described.</p>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Data Received</th>
+                            <th>Purpose</th>
+                            <th>Location</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google Cloud (Firebase)</strong></td>
+                            <td>Anonymized chat text, anonymous user ID, auth tokens</td>
+                            <td>AI analysis infrastructure</td>
+                            <td>EU (europe-west1)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>OpenAI</strong></td>
+                            <td>Anonymized chat text (forwarded via Firebase)</td>
+                            <td>AI language model for analysis</td>
+                            <td>United States</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RevenueCat</strong></td>
+                            <td>Device ID, purchase and subscription events</td>
+                            <td>Subscription management</td>
+                            <td>United States</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Apple (App Store / StoreKit)</strong></td>
+                            <td>Purchase data</td>
+                            <td>Payment processing</td>
+                            <td>Per Apple's terms</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 7. International Data Transfers -->
+        <section class="policy-card">
+            <h2>7. International Data Transfers (Art. 44–49 GDPR)</h2>
+            <p>OpenAI and RevenueCat are based in the United States. Data transfers to the US are covered by:</p>
+            <ul>
+                <li>Certification under the <strong>EU–US Data Privacy Framework</strong> (adequacy decision of July 2023), or</li>
+                <li><strong>Standard Contractual Clauses (SCCs)</strong> where DPF certification is not in place</li>
+                <li><strong>Data Processing Agreements (DPAs)</strong> signed with all processors</li>
+            </ul>
+            <p>Our primary AI processing infrastructure (Firebase Cloud Functions) is deployed in the <strong>EU (europe-west1)</strong>, minimizing cross-border data transfers for the core service.</p>
+        </section>
+
+        <!-- 8. Data Storage & Security -->
+        <section class="policy-card">
+            <h2>8. Data Storage &amp; Security (Art. 32 GDPR)</h2>
+            <ul>
+                <li><strong>Analysis results</strong> are stored only on your device, in an encrypted file using iOS Data Protection.</li>
+                <li><strong>Profile data</strong> (name, age, persona) is stored on your device.</li>
+                <li><strong>Consent records</strong> are stored on your device.</li>
+                <li>All data transmission uses <strong>HTTPS/TLS encryption</strong>.</li>
+                <li><strong>Firebase App Check</strong> protects our API endpoints against unauthorized access.</li>
+                <li><strong>No personal data is retained on our servers</strong> after processing is complete.</li>
+            </ul>
+        </section>
+
+        <!-- 9. Data Retention -->
+        <section class="policy-card">
+            <h2>9. Data Retention (Art. 5(1)(e) GDPR)</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Retention Period</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Analysis results</strong></td>
+                            <td>Stored on your device until you delete them; automatically purged after 12 months</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Profile data</strong></td>
+                            <td>Stored on your device until you delete it or uninstall the app</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Firebase anonymous ID</strong></td>
+                            <td>Deleted when you use "Delete All Data" in Settings</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Chat text</strong></td>
+                            <td>Not retained on our servers after processing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>RevenueCat data</strong></td>
+                            <td>Subject to <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat's own retention policy</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 10. Your Rights -->
+        <section class="policy-card">
+            <h2>10. Your Rights (Art. 15–22 GDPR)</h2>
+            <p>Under the GDPR, you have the following rights. Here is how to exercise each one:</p>
+            <ul>
+                <li><strong>Access (Art. 15):</strong> Use "Download My Data" in Settings to export all your data as a JSON file.</li>
+                <li><strong>Rectification (Art. 16):</strong> Edit your name, age, and persona in the app at any time.</li>
+                <li><strong>Erasure (Art. 17):</strong> Use "Delete All Data" in Settings to permanently delete all local data and request deletion of your Firebase account and associated server-side data.</li>
+                <li><strong>Data Portability (Art. 20):</strong> Use "Download My Data" to receive your data in a machine-readable JSON format.</li>
+                <li><strong>Restriction (Art. 18):</strong> Withdraw consent for specific processing in Settings → Manage Privacy Consent.</li>
+                <li><strong>Objection (Art. 21):</strong> Opt out of any legitimate-interest processing in Settings → Manage Privacy Consent.</li>
+                <li><strong>Automated Decision-Making (Art. 22):</strong> All mood scoring, relationship analysis, and court verdicts are generated automatically by AI without human review. You have the right to contest any result or request human review — email <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a>.</li>
+            </ul>
+        </section>
+
+        <!-- 11. Consent -->
+        <section class="policy-card">
+            <h2>11. Consent (Art. 7 GDPR)</h2>
+            <ul>
+                <li>We ask for your <strong>explicit consent</strong> before processing any special-category data (mood and emotional analysis).</li>
+                <li>Consent is <strong>granular</strong> (per purpose) and <strong>freely given</strong> — you can use the app in a limited capacity without granting consent for AI analysis.</li>
+                <li>You can <strong>withdraw consent</strong> at any time in Settings → Manage Privacy Consent.</li>
+                <li>Withdrawing consent does not affect the lawfulness of processing carried out before withdrawal.</li>
+            </ul>
+        </section>
+
+        <!-- 12. Children's Privacy -->
+        <section class="policy-card">
+            <h2>12. Children's Privacy</h2>
+            <p>MyMoodLab is not intended for users under <strong>16 years of age</strong> (or 13, depending on your jurisdiction). We do not knowingly collect personal data from children. If you believe a child has submitted data to us, please contact us at <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a> and we will delete it promptly.</p>
+        </section>
+
+        <!-- 13. Changes to This Policy -->
+        <section class="policy-card">
+            <h2>13. Changes to This Policy</h2>
+            <p>We may update this policy from time to time. When we do, the effective date at the top of this page will be updated. Continued use of MyMoodLab after changes are posted constitutes your acceptance of the updated policy. For material changes, we will notify you within the app.</p>
+        </section>
+
+        <!-- 14. Contact & Complaints -->
+        <section class="policy-card">
+            <h2>14. Contact &amp; Complaints</h2>
+            <p>For any data protection question or to exercise your rights, contact us at: <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a></p>
+            <p>You also have the right to lodge a complaint with your local data protection supervisory authority:</p>
+            <ul>
+                <li><strong>Denmark:</strong> <a href="https://www.datatilsynet.dk" target="_blank" rel="noopener">Datatilsynet</a></li>
+                <li><strong>Italy:</strong> <a href="https://www.garanteprivacy.it" target="_blank" rel="noopener">Garante per la protezione dei dati personali</a></li>
+                <li><strong>France:</strong> <a href="https://www.cnil.fr" target="_blank" rel="noopener">CNIL</a></li>
+                <li><strong>Other EU member states:</strong> Contact your national data protection authority</li>
+            </ul>
         </section>
 
         <footer>
-            <p>© 2026 MyMoodLab</p>
+            <p>© 2026 MyMoodLab · <a href="mailto:support@advancedmoodanalyzer.com">support@advancedmoodanalyzer.com</a></p>
         </footer>
 
     </div>
