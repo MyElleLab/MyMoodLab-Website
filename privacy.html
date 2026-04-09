@@ -396,7 +396,7 @@
             <ol>
                 <li>You select a WhatsApp chat export from your device.</li>
                 <li><strong>Before the chat leaves your device</strong>, our name anonymization pipeline replaces all participant names with pseudonyms (Person A, Person B, etc.).</li>
-                <li>The anonymized text is sent securely over HTTPS to our servers — Google Cloud / Firebase Cloud Functions, deployed in the United States (us-central1).</li>
+                <li>The anonymized text is sent securely over HTTPS to our servers — Google Cloud / Firebase Cloud Functions, deployed in Europe (europe-west1).</li>
                 <li>Our servers forward the anonymized text to OpenAI's API for analysis.</li>
                 <li>OpenAI generates mood scores, feedback, verdicts, and insights, which are returned to our servers.</li>
                 <li>Results are sent back to your device and stored locally only.</li>
@@ -437,7 +437,7 @@
                             <td><strong>Google Cloud (Firebase)</strong></td>
                             <td>Anonymized chat text, anonymous user ID, auth tokens</td>
                             <td>AI analysis infrastructure</td>
-                            <td>United States (us-central1)</td>
+                            <td>Europe (europe-west1)</td>
                         </tr>
                         <tr>
                             <td><strong>OpenAI</strong></td>
