@@ -404,6 +404,8 @@
                 <li><strong>The anonymized chat text is deleted from our servers after processing</strong> — we do not retain it.</li>
                 <li>Server logs do not contain chat content.</li>
             </ol>
+            <p>The same pipeline applies to the <strong>AI Court</strong> and the <strong>AI assistant</strong>: participant names are replaced with pseudonyms before the conversation, the stored analysis summary, or the chat partner's name is transmitted, and the real names are restored in the result on your device. One exception applies — a question you type into the AI assistant is sent as you wrote it, so avoid typing the names of people the app does not already know about.</p>
+            <p>Alongside the conversation text we send <strong>your age and the persona you selected</strong>, so the AI can match its tone. We do not send your name, email address, phone number, contacts, photos, or the original chat file.</p>
         </section>
 
         <!-- 5. Third-Party Chat Data (Art. 14) -->
@@ -414,7 +416,7 @@
             <ul>
                 <li>We <strong>anonymize all participant names</strong> (replacing them with pseudonyms) before the chat text is transmitted to our servers or to OpenAI.</li>
                 <li>The anonymized text is <strong>not stored</strong> on our servers after processing is complete.</li>
-                <li>We display a <strong>clear warning before every upload</strong> reminding you that the conversation contains other people's personal data.</li>
+                <li>Before your first upload we show a <strong>full disclosure of what is sent and who receives it</strong>, together with a reminder that the conversation contains other people's personal data, and we ask you to confirm before anything is transmitted. That disclosure stays available in Settings → Manage Privacy Consent.</li>
             </ul>
             <p>By uploading a chat, you confirm that you have a legitimate reason to share that conversation and that you understand the other participants have not directly consented to this analysis.</p>
         </section>
@@ -436,14 +438,14 @@
                     <tbody>
                         <tr>
                             <td><strong>Google Cloud (Firebase)</strong></td>
-                            <td>Anonymized chat text, anonymous user ID, auth tokens</td>
+                            <td>Anonymized chat text, your age and chosen persona, anonymous user ID, auth tokens</td>
                             <td>AI analysis infrastructure</td>
                             <td>Europe (europe-west1)</td>
                         </tr>
                         <tr>
-                            <td><strong>OpenAI</strong></td>
-                            <td>Anonymized chat text only (forwarded via Firebase) — no real names, no email address, no account identifiers</td>
-                            <td>AI language model for analysis</td>
+                            <td><strong>OpenAI, L.L.C.</strong></td>
+                            <td>Anonymized chat text (forwarded via Firebase), your age and chosen persona, and any question you type to the AI assistant — no real names, no email address, no account identifiers</td>
+                            <td>AI language model that generates your scores, feedback, court verdicts and behaviour profiles</td>
                             <td>United States</td>
                         </tr>
                         <tr>
