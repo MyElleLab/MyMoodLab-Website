@@ -10,4 +10,3 @@ Hosted at [advancedmoodanalyzer.com](https://www.advancedmoodanalyzer.com).
 - `privacy.html` — Privacy Policy
 - `terms.html` — Terms of Use
 - `MyML_icon.png` — App icon (PNG)
-- `MyML_icon.svg` — App icon (SVG)
